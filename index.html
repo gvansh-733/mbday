@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>For You 💛</title>
+
+    <!-- Elegant font -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #surpriseBtn {
+            padding: 18px 44px;
+            font-size: 22px;
+            font-family: 'Poppie', serif;
+            letter-spacing: 1px;
+            color: #3b2f00;
+            background: linear-gradient(135deg, #ffd84d, #ffb703);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 0 18px rgba(255, 184, 3, 0.6);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        #surpriseBtn:hover {
+            transform: scale(1.08);
+            box-shadow: 0 0 32px rgba(255, 215, 0, 0.9);
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 15px rgba(255, 184, 3, 0.5);
+            }
+            50% {
+                box-shadow: 0 0 30px rgba(255, 215, 0, 0.9);
+            }
+            100% {
+                box-shadow: 0 0 15px rgba(255, 184, 3, 0.5);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <button id="surpriseBtn">Ready for the surprise 🌻</button>
+
+    <script>
+        document.getElementById("surpriseBtn").addEventListener("click", function () {
+            window.location.href = "birthday.html";
+        });
+    </script>
+
+</body>
+</html>

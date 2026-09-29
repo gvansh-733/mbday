@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Happy Birthday 💛</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Caveat:wght@500&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f5deb3, #fff1d6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* subtle paper grain */
+        body::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(rgba(255,255,255,0.25) 1px, transparent 1px);
+            background-size: 6px 6px;
+            opacity: 0.25;
+            pointer-events: none;
+        }
+
+        /* floating accent shapes */
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 183, 3, 0.22);
+            animation: float 16s linear infinite;
+        }
+
+        .shape.one { width: 110px; height: 110px; top: 12%; left: 14%; }
+        .shape.two { width: 70px; height: 70px; bottom: 18%; right: 20%; animation-duration: 13s; }
+        .shape.three { width: 55px; height: 55px; top: 65%; left: 9%; animation-duration: 18s; }
+
+        @keyframes float {
+            0% { transform: translate(0,0); }
+            50% { transform: translate(20px,-25px); }
+            100% { transform: translate(0,0); }
+        }
+
+        /* old-school letter style */
+        .letter {
+            position: relative;
+            background: #fbf3e6;
+            max-width: 720px;
+            padding: 48px 50px;
+            border-radius: 6px;
+            border: 1px solid rgba(120, 90, 40, 0.35);
+            box-shadow: 8px 10px 25px rgba(90, 62, 27, 0.35);
+            animation: fadeIn 1.6s ease;
+            z-index: 1;
+            text-align: left;
+        }
+
+        .letter::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: linear-gradient(rgba(255,255,255,0.15), rgba(0,0,0,0.03));
+            pointer-events: none;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            color: #5a3e1b;
+            font-size: 40px;
+            margin-bottom: 18px;
+            text-align: center;
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            color: #6b4f2c;
+            font-weight: 400;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        p {
+            font-family: 'Caveat', cursive;
+            font-size: 22px;
+            color: #5a3e1b;
+            line-height: 1.9;
+            margin-bottom: 22px;
+        }
+
+        .highlight {
+            color: #ffb703;
+            font-weight: bold;
+        }
+
+        .footer {
+            margin-top: 36px;
+            font-family: 'Caveat', cursive;
+            font-size: 22px;
+            text-align: right;
+            color: #5a3e1b;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(26px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Button at the bottom */
+        #memoriesBtn {
+            display: inline-block;
+            padding: 14px 28px;
+            font-family: 'Caveat', cursive;
+            font-size: 22px;
+            background: #ffb703;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            box-shadow: 0 0 12px rgba(255,183,3,0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-top: 30px;
+        }
+
+        #memoriesBtn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 18px rgba(255,183,3,0.8);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- floating shapes -->
+    <div class="shape one"></div>
+    <div class="shape two"></div>
+    <div class="shape three"></div>
+
+    <div class="letter">
+        <h1>Happy Birthday , Mahak 💛</h1>
+        <h2>For someone who feels like home</h2>
+
+        <p>
+            Today isn’t just about candles and wishes.  
+            It’s about celebrating <span class="highlight">YOU</span>,  
+            and the craziness you quietly bring into my life.
+        </p>
+
+        <p>
+            I didn’t want to give you something ordinary,  
+            so I wrote this in my own way.  
+            Every word here carries my time,  
+            my thoughts, and a lot of care.
+        </p>
+
+        <p>
+            May this year be gentle with you,  
+            surprise you softly,  
+            and remind you how deeply you matter.
+        </p>
+
+        <p>
+            I know that I can't be there on this day, 
+            but this making me more  regretful than you, so I decided 
+            to make this for my <span class="highlight">CUTE BABY</span>.
+            Wishing the best for you.
+        </p>
+
+        <div class="footer">
+            — Always yours, Vansh 🌻
+        </div>
+
+        <!-- Button to memories page -->
+        <div style="text-align:center;">
+            <button id="memoriesBtn">Click to see something special 💌</button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('memoriesBtn').addEventListener('click', function(){
+            window.location.href = 'memories.html';
+        });
+    </script>
+
+</body>
+</html>

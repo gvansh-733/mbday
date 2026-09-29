@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Whispers & Words 💌</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,600;1,600&family=Noto+Sans+Devanagari:wght@400;500&family=Caveat:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+    body {
+        margin: 0;
+        font-family: 'Caveat', cursive;
+        /* Allow scrolling if screen is too small */
+        overflow-y: auto; 
+        overflow-x: hidden;
+        height: 100vh;
+        width: 100vw;
+        background: #000;
+        position: relative; 
+    }
+
+    /* Background Video */
+    #bgVideo {
+        position: fixed;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: -2;
+    }
+
+    .video-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.2);
+        z-index: -1;
+    }
+
+    /* --- POLAROID STYLE --- */
+    .polaroid {
+        position: absolute; 
+        width: 135px;       
+        min-height: auto;
+        background: #fff;
+        padding: 8px;
+        border-radius: 0px; 
+        box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.4);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        z-index: 5;
+        transition: transform 0.3s;
+    }
+
+    .polaroid:hover {
+        transform: scale(1.1) !important;
+        z-index: 10;
+    }
+
+    .polaroid img {
+        width: 100%;
+        height: auto;
+        border: 1px solid #eee;
+        display: block;
+    }
+
+    .polaroid p {
+        margin: 0;
+        font-size: 11px;
+        line-height: 1.4;
+        color: #222;
+        font-family: 'Caveat', cursive;
+        font-weight: 600;
+    }
+
+    .hindi-text {
+        font-family: 'Noto Sans Devanagari', sans-serif;
+        font-size: 10px !important;
+        font-weight: 600;
+        line-height: 1.5;
+    }
+
+    /* --- ADJUSTED POSITIONS (Moved UP) --- */
+    
+    /* 1. Top Left */
+    .pos-top-left {
+        top: 8%;  /* Moved up from 12% */
+        left: 3%;
+        transform: rotate(-4deg);
+    }
+
+    /* 2. Top Right */
+    .pos-top-right {
+        top: 8%; /* Moved up from 12% */
+        right: 3%;
+        transform: rotate(4deg);
+    }
+
+    /* 3. Bottom Left - Moved UP to make room for button */
+    .pos-bottom-left {
+        bottom: 25%; /* Moved up from 18% */
+        left: 3%;
+        transform: rotate(3deg);
+    }
+
+    /* 4. Bottom Right - Moved UP to make room for button */
+    .pos-bottom-right {
+        bottom: 25%; /* Moved up from 18% */
+        right: 3%;
+        transform: rotate(-3deg);
+    }
+
+    /* --- BUTTON MOVED UP --- */
+    .wish-container {
+        position: absolute;
+        bottom: 12%; /* Moved UP from 6% to avoid browser bar */
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 10;
+        width: 100%;
+        text-align: center;
+        padding-bottom: 20px; /* Extra padding for scrolling space */
+    }
+
+    .wish-btn {
+        background: #ffb703;
+        color: #fff;
+        font-family: 'Great Vibes', cursive;
+        font-size: 22px;
+        padding: 10px 30px;
+        border-radius: 50px;
+        text-decoration: none;
+        box-shadow: 0 4px 15px rgba(255, 183, 3, 0.5);
+        border: none;
+        cursor: pointer;
+        display: inline-block;
+    }
+
+    /* Overlay */
+    #overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.9);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 20;
+        transition: opacity 0.8s ease;
+    }
+
+    #openBtn {
+        font-family: 'Great Vibes', cursive;
+        font-size: 35px;
+        padding: 15px 40px;
+        border: none;
+        border-radius: 50px;
+        background: #ffb703;
+        color: white;
+        cursor: pointer;
+        box-shadow: 0 0 20px rgba(255, 183, 3, 0.4);
+    }
+</style>
+</head>
+
+<body>
+
+    <video id="bgVideo" playsinline loop>
+        <source src="video.mp4" type="video/mp4">
+    </video>
+
+    <div class="video-overlay"></div>
+
+    <div id="overlay">
+        <button id="openBtn">Open me 💙</button>
+    </div>
+
+    <div class="polaroid pos-top-left">
+        <img src="ap.jpg.jpeg" alt="Memory 1">
+    </div>
+
+    <div class="polaroid pos-top-right">
+        <p>They say perfection doesn't exist, but they haven't seen your smile ✨</p>
+    </div>
+
+    <div class="polaroid pos-bottom-left">
+        <p class="hindi-text">
+            ख़ूबसूरती तो बहुत है इस संसार में,<br>
+            पर मेरी आँखों को बस तेरा इंतज़ार है।
+        </p>
+    </div>
+
+    <div class="polaroid pos-bottom-right">
+        <img src="pa.jpg.jpeg" alt="Memory 2">
+    </div>
+
+    <div class="wish-container">
+        <a href="cake.html" class="wish-btn">Now, make a wish 🎂</a>
+    </div>
+
+    <script>
+        const video = document.getElementById("bgVideo");
+        const overlay = document.getElementById("overlay");
+        const btn = document.getElementById("openBtn");
+
+        video.volume = 1.0; 
+
+        btn.addEventListener("click", () => {
+            video.muted = false;
+            video.play().catch(error => { console.log(error); });
+            overlay.style.opacity = "0";
+            setTimeout(() => {
+                overlay.style.display = "none";
+            }, 800);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Happy Birthday 🎂</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Caveat:wght@700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(circle at top, #ffecd2, #fcb69f);
+            font-family: 'Caveat', cursive;
+            overflow: hidden;
+            color: #5a3e1b;
+        }
+
+        h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 65px;
+            color: #5a3e1b;
+            text-align: center;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .cake-container {
+            position: relative;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 0.3s ease;
+        }
+
+        .cake-container:active {
+            transform: scale(0.95);
+        }
+
+        .cake-layer {
+            width: 280px;
+            height: 65px;
+            background: linear-gradient(to bottom, #ffad91, #e8967a);
+            border-radius: 20px 20px 10px 10px;
+            position: relative;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        }
+
+        /* Frosting Detail */
+        .cake-layer::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 15px;
+            background: rgba(255,255,255,0.4);
+            border-radius: 20px 20px 5px 5px;
+        }
+
+        .middle { width: 210px; height: 55px; margin-top: -10px; background: linear-gradient(to bottom, #ffd1a9, #e8b88e); z-index: 2; }
+        .top { width: 140px; height: 45px; margin-top: -10px; background: linear-gradient(to bottom, #ffe1a8, #ebcf96); z-index: 3; }
+
+        .cake-plate {
+            width: 320px;
+            height: 18px;
+            background: #fff4e0;
+            border-radius: 50%;
+            margin-top: -5px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+
+        /* Candle */
+        .candle {
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 10px;
+            height: 30px;
+            background: #fff;
+            border-radius: 3px;
+            z-index: 4;
+        }
+
+        .flame {
+            width: 10px;
+            height: 18px;
+            background: radial-gradient(circle, #fff200, #ff7a00);
+            border-radius: 50% 50% 20% 20%;
+            position: absolute;
+            top: -20px;
+            left: 0;
+            box-shadow: 0 0 10px #ffb703;
+            animation: flicker 0.1s infinite alternate;
+        }
+
+        @keyframes flicker {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(1.2) rotate(2deg); opacity: 0.8; }
+        }
+
+        #message {
+            margin-top: 40px;
+            font-size: 32px;
+            text-align: center;
+            min-height: 40px;
+            color: #5a3e1b;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1 id="headline">Happy Birthday ❤️</h1>
+
+    <div class="cake-container" onclick="blowCandle()">
+        <div class="top cake-layer">
+            <div class="candle">
+                <div class="flame" id="flame"></div>
+            </div>
+        </div>
+        <div class="middle cake-layer"></div>
+        <div class="cake-layer"></div>
+        <div class="cake-plate"></div>
+    </div>
+
+    <div id="message">Click the cake to make a wish...</div>
+
+    <script>
+        function blowCandle() {
+            const flame = document.getElementById('flame');
+            const message = document.getElementById('message');
+            
+            if (flame.style.display !== 'none') {
+                // Extinguish flame
+                flame.style.display = 'none';
+                
+                // Update text
+                message.innerHTML = "Wish Granted! ✨<br>Have a magical day!";
+                document.getElementById('headline').innerText = "Celebrate! 🎉";
+                
+                // Trigger a few sparkles
+                createSparkles(30);
+            }
+        }
+
+        function createSparkles(n) {
+            for(let i=0; i<n; i++){
+                const s = document.createElement('div');
+                s.style.position = 'absolute';
+                s.style.width = Math.random() * 8 + 'px';
+                s.style.height = s.style.width;
+                s.style.background = '#fff';
+                s.style.borderRadius = '50%';
+                s.style.left = Math.random() * 100 + 'vw';
+                s.style.top = '100vh';
+                s.style.opacity = '0.6';
+                s.style.animation = `rise ${Math.random()*2 + 1}s linear forwards`;
+                document.body.appendChild(s);
+            }
+        }
+    </script>
+
+    <style>
+        @keyframes rise {
+            to { transform: translateY(-110vh); opacity: 0; }
+        }
+    </style>
+
+</body>
+</html>
